@@ -110,6 +110,17 @@ resource "aws_msk_cluster" "this" {
     }
   }
 
+  dynamic "client_authentication" {
+    for_each = var.certificate_authority_arns
+    content {
+      tls {
+        certificate_authority_arns = var.certificate_authority_arns
+      }
+    }
+
+  }
+
+
   open_monitoring {
     prometheus {
       jmx_exporter {

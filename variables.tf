@@ -77,6 +77,12 @@ variable "encryption_in_transit_in_cluster" {
   default     = true
 }
 
+variable "certificate_authority_arns" {
+  description = "Cert authority to use for client Auth."
+  type        = list(string)
+  default     = []
+}
+
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)
